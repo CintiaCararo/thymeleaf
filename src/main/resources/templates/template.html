@@ -1,0 +1,34 @@
+<!-- arquivo de layout base que define a estrutura comum para várias páginas do site -->
+
+<!DOCTYPE html>
+<html lang="pt" 
+    xmlns:th="http://thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Aula</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/assets/logo.jpg" th:href="@{/assets/logo.jpg}">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../static/css/estilo.css" th:href="@{/css/estilo.css}">
+</head>
+
+<body>
+
+    <!--aqui está o index-->
+    <div layout:fragment="conteudo" th:remove="tag"></div>
+
+<div class="teste">
+    teste
+</div>
+    
+    <div id="rodape" th:replace="~{componentes/_footer.html :: footer}"></div>
+
+
+    <script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+</body>
+
+</html>
