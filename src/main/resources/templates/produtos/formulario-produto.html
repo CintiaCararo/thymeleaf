@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{template.html}">
+
+<head>
+    <title>Cadastro de Produtos</title>
+</head>
+
+<body>
+    <div layout:fragment="conteudo">
+        <h2 class="title">Cadastro de produtos</h2>
+        <div>
+
+            <form method="post" action="#" th:action="@{/produtos}" th:object="${dados}">
+                <input type="hidden" name="id" th:field="*{id}">
+
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input id="nome" name="nome" th:field="*{nome}" required>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro!</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <input id="descricao" name="descricao" th:field="*{descricao}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade">Quantidade:</label>
+                    <input id="quantidade" name="quantidade" th:field="*{quantidade}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="preco">Preço:</label>
+                    <input id="preco" name="preco" th:field="*{preco}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" name="tipo" required th:field="*{tipo}">
+                        <option th:value="${null}">Selecione um tipo</option>
+                        <option th:each="tipo : ${tipo}" th:value="${tipo}" th:text="${tipo}" th:selected="${dados.tipo == tipo}"></option>
+                    </select>
+                </div>
+
+
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <img src="/static/assets/plus.png" th:src="@{/assets/plus.png}" alt="Ícone de adicionar"
+                            class="btn-icon">Salvar
+                    </button>
+
+                    <a href="listagem-produtos.html" th:href="@{/produtos}" class="btn btn-secondary">
+                        <img src="/static/assets/back.png" th:src="@{/assets/back.png}" alt="Voltar"
+                            class="btn-icon">Voltar
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

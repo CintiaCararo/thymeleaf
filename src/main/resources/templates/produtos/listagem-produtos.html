@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{template.html}">
+
+<head>
+    <title>Listagem de Produtos</title>
+</head>
+
+<body>
+    <div layout:fragment="conteudo">
+        <div th:if="${param.sucesso}">
+            <p class="alert alert-success">Produto salvo com sucesso!</p>
+          </div>
+        <h2>Listagem de produtos</h2>
+
+        <div>
+            <a href="formulario-produtos.html" th:href="@{/produtos/formulario}">
+                <img src="/static/assets/plus.png" th:src="@{/assets/plus.png}" alt="Ícone de adicionar">
+                Novo Produto
+            </a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descricao</th>
+                    <th>Quantidade</th>
+                    <th>Tipo</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="produto: ${produtos}">
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.descricao}"></td>
+                    <td th:text="${produto.quantidade}"></td>
+                    <td th:text="${produto.tipo}"></td>
+                    <td th:text="${produto.preco}"></td>
+                    <td>
+                        <a href="#" th:href="@{/produtos/formulario?id={id}(id=${produto.id})}" title="Editar">
+                            <img src="/static/assets/edit.svg" th:src="@{/assets/edit.svg}" alt="Editar">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
